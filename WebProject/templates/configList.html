@@ -1,0 +1,136 @@
+{% extends 'layout.tpl' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+<style type="text/css">
+  .cfgTable {
+    width: 100%;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(209, 204, 219);
+  }
+
+  .cfgTable th {
+    text-align: center;
+  }
+
+  .cfgTable td {
+    text-align: center;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(209, 204, 219);
+  }
+
+  /* Border styles */
+
+  .cfgTable thead,
+  .cfgTable tr {
+    border-top-width: 1px;
+    border-top-style: solid;
+    background: #ffffff
+  }
+
+  /* Padding and font style */
+
+  .cfgTable thead th {
+    padding: 12px 10px;
+    font-size: 14px;
+    font-family: Verdana;
+    color: rgb(13, 13, 14);
+    background: #606ce0
+  }
+
+  .cfgTable tbody td {
+    padding: 5px 10px;
+    font-size: 12px;
+    font-family: Verdana;
+    color: rgb(13, 13, 14);
+  }
+
+  /* Alternating background colors */
+
+  .cfgTable tbody tr:nth-child(even) {
+    background: rgb(223, 216, 232)
+  }
+
+  .cfgTable tbody tr:nth-child(odd) {
+    background: rgb(188, 216, 210)
+  }
+
+  /* 调整列宽 */
+
+  .colSingleLine {
+    width: 100px;
+    text-align: center;
+  }
+
+  .colMulLine {
+    width: 100px;
+    text-align: center;
+  }
+
+  .colMax {
+    min-width: 300px;
+    text-align: left;
+    padding: 0px 5px;
+  }
+
+  .blockspan {
+    display: inline-block;
+    text-align: left;
+    border: 1px solid #9c9eaf;
+    background-color: rgba(167, 218, 211, 0.349);
+    margin: 2px;
+    padding: 1px 5px;
+  }
+</style>
+<table class="cfgTable">
+
+  <tr>
+    <th class="colSingleLine">工程</th>
+    <th class="colSingleLine">主机地址</th>
+    <th class="colSingleLine">分组信息</th>
+    <th class="colSingleLine">节点数</th>
+    <th class="colMulLine">http</th>
+    <th class="colMulLine">https</th>
+    <th class="colMulLine">ajp</th>
+    <th class="colMulLine">dubbo </th>
+    <th class="colMax">目录路径</th>
+  </tr>
+  {% for i in args %}
+  <tr>
+    <td>{{ i.appname }}</td>
+    <td>{{ i.host }}</td>
+    <td>{{ i.group }}</td>
+    <td>{{ i.node }}</td>
+    <td>
+      {% for k in i.http %} 
+        {{ k }} 
+      {% endfor %}
+    </td>
+    <td>
+      {% for k in i.https %} 
+        {{ k }}
+      {% endfor %}
+    </td>
+    <td>
+      {% for k in i.ajp %}
+        {{ k }} 
+      {% endfor %}
+    </td>
+    <td>
+      {% for k in i.dubbo %} 
+        {{ k }} 
+      {% endfor%}
+    </td>
+    <td>
+      {% for k in range(1,2) %}
+      <span class="blockspan"> ~/{{ i.appname }}/tomcat{{ k }} </span>
+      {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>

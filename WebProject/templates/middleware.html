@@ -1,0 +1,224 @@
+{% extends 'base.html' %} 
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+<!--//outer-wp-->
+<div class="outter-wp">
+		<!--/sub-heard-part-->
+				 <div class="sub-heard-part">
+						   <ol class="breadcrumb m-b-0">
+								<li><a href="#">Home</a></li>
+								<li class="active"> Tabs &amp; Panels</li>
+							</ol>
+				</div>	
+				<!--/sub-heard-part-->	
+			<!--/tabs-->
+			 <div class="tab-main">
+				 <!--/tabs-inner-->
+					<div class="tab-inner">
+						  <div id="tabs" class="tabs">
+									<h2 class="inner-tittle">中间件信息面板 </h2>
+								<div class="graph">
+														<nav>
+															<ul>
+																<li><a href="#section-1" class="icon-shop"><i class="fa fa-briefcase"></i> <span>zk</span></a></li>
+																<li><a href="#section-2" class="icon-cup"><i class="fa fa-list-alt"></i> <span>redis</span></a></li>
+																<li><a href="#section-3" class="icon-food"><i class="fa fa-list-alt"></i> <span>nginx</span></a></li>
+															</ul>
+														</nav>
+														<div class="content tab">
+															<section id="section-1">
+														
+																	<!--/zklist-inner-->
+																		<div class="graph-visual tables-main">
+																				<h3 class="inner-tittle two"> {{ title }} </h3>
+																					<div class="table-responsive">
+																						<div class="tables">
+																								<table class="table table-bordered table-hover table-striped"> 
+																									<thead> 
+																											<tr>
+																													<th >作用域</th>
+																													  <th >域名</th>
+																													  <th >主机地址</th>
+																													  <th >对外端口</th>
+																													  <th >LF通信端口</th>
+																													  <th >选举通信端口</th>
+																													</tr>
+																								</thead>
+																								<tbody>
+																										{% for i in zk %}
+																										<tr>
+																										  <td>{{ i[0] }}</td>
+																										  <td>{{ i[1] }}</td>
+																										  <td>{{ i[2] }}</td>
+																										  <td>{{ i[3] }}</td>
+																										  <td>{{ i[4] }}</td>
+																										  <td>{{ i[5] }}</td>
+																										</tr>
+																										{% endfor %}
+																								</tbody>
+																								</table>
+																							</div>
+																				
+																					</div>
+																		</div>
+																	<!--/zklist-inner-->
+																																													
+															</section>
+															<section id="section-2">
+																
+																	
+																	<!--/redislist-inner-->
+																	<div class="graph-visual tables-main">
+																			<h3 class="inner-tittle two"> {{ title }} </h3>
+																				<div class="table-responsive">
+																					<div class="tables">
+																							<table class="table table-bordered table-hover table-striped"> 
+																								<thead> 
+																								<tr>
+																									<th class="col-3 text-center">项目</th>
+																									<th class="col-3 text-center">主机地址</th>
+																									<th class="col-3 text-center">主机地址</th>
+																									<th class="col-3 text-center">分组信息</th>
+																									<th class="col-3 text-center">节点数</th>
+																									<th class="col-3 text-center">http</th>
+																									<th class="col-3 text-center">https</th>
+																									<th class="col-3 text-center">ajp</th>
+																									<th class="col-3 text-center">shutdown</th>
+																									<th class="col-3 text-center">jmx</th>
+																									<th class="col-3 text-center">dubbo </th>
+																									<th class="col-3 text-center">目录路径</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																									{% for i in args %}
+																									<tr>
+																									  <td>{{ i[0] }}</td>
+																									  <td>{{ i[1] }}</td>
+																									  <td>{{ i[2] }}</td>
+																									  <td>{{ i[3] }}</td>
+																									  <td>{{ i[4] }}</td>
+																									  <td>{{ i[5] }}</td>
+																									  <td>{{ i[6] }}</td>
+																									  <td>{{ i[7] }}</td>
+																									  <td>{{ i[8] }}</td>
+																									  <td>{{ i[9] }}</td>
+																									  <td>{{ i[10] }}</td>
+																									</tr>
+																									{% endfor%}
+																								  </table>
+																							</tbody>
+																							</table>
+																						</div>
+																			
+																				</div>
+																	</div>
+																<!--/redislist-inner-->
+															
+																
+															</section>
+															<section id="section-3">
+																
+																
+																	<!--/nginxlist-inner-->
+																	<div class="graph-visual tables-main">
+																			<h3 class="inner-tittle two"> {{ title }} </h3>
+																				<div class="table-responsive">
+																					<div class="tables">
+																							<table class="table table-bordered table-hover table-striped"> 
+																								<thead> 
+																								<tr>
+																									
+																									<th class="col-3 text-center">工程</th>
+																									<th class="col-3 text-center">主机地址</th>
+																									<th class="col-3 text-center">分组信息</th>
+																								
+																									<th class="col-3 text-center">http</th>
+																									<th class="col-3 text-center">https</th>
+																									<th class="col-3 text-center">负载地址</th>
+																									<th class="col-3 text-center">http</th>
+																									<th class="col-3 text-center">https</th>
+																									<th class="col-3 text-center">成在网地址</th>
+																									<th class="col-3 text-center">http</th>
+																									<th class="col-3 text-center">https</th>
+																									<th class="col-3 text-center">公网地址</th>
+																									<th class="col-3 text-center">http</th>
+																									<th class="col-3 text-center">https</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+																								{% for i in nginx %}
+																								<tr>
+																									
+																								  <td>{{ i[0] }}</td>
+																									<td>{{ i[1] }}</td>
+																									<td>{{ i[2] }}</td>
+																									<td>{{ i[3] }}</td>
+																									<td>{{ i[4] }}</td>
+																									<td>
+																										{% for k in i[5] %}
+																											{{ k }}
+																										{% endfor %}
+																									</td>
+																									<td>
+																										{% for k in i[6] %}
+																											{{ k }}
+																										{% endfor %}
+																									</td>
+																									<td>
+																										{% for k in i[7] %}
+																											{{ k }}
+																										{% endfor %}
+																									</td>
+																											<td>
+																										{% for k in i[8] %}
+																											{{ k }}
+																										{% endfor %}
+																									</td>
+																											<td>
+																										{% for k in i[9] %}
+																											{{ k }}
+																										{% endfor %}
+																									</td>
+																											<td>
+																										{% for k in i[10] %}
+																											{{ k }}
+																										{% endfor %}
+																									</td>
+																									<td>
+																										{% for k in range(1,i[4]+1) %}
+																										~/{{ i[1] }}/tomcat{{ k }}
+																										{% endfor %}
+																									</td>
+																								</tr>
+																								{% endfor %}
+																							</tbody>
+																							</table>
+																						</div>
+																			
+																				</div>
+																	</div>
+																<!--/nginxlist-inner-->
+																
+															</section>
+
+
+														</div><!-- /content -->
+													</div>
+													<!-- /tabs -->
+													
+												</div>
+												<script src="/static/js/cbpFWTabs.js"></script>
+												<script>
+													new CBPFWTabs( document.getElementById( 'tabs' ) );
+												</script>
+
+
+									 <div class="clearfix"> </div>
+							</div>
+							<!--//tabs-inner-->
+					</div>
+				  <!--//tabs-->
+			 </div>	
+			<!--//outer-wp-->
+									 
+{% endblock %}									 

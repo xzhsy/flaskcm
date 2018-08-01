@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+<h2>{{ title }}</h2>
+
+<div class="row">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    用户名
+                </th>
+                <th>
+                    邮箱
+                </th>
+                <th>
+                    管理员标识
+                </th>
+                <th>
+                    创建时间
+                </th>
+               <th>
+                    是否允许登录
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>
+                    {{ data.username }}
+                </td>
+                <td>
+                    {{ data.email}}
+                </td>
+                <td>
+                    {% if data.IsAdmin  %}
+                    <span class="label label-primary">管理员</span>
+                    {% else %}
+                    <span class="label label-default">普通</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {{ data.create_time }}
+                </td>
+                <td>
+					{% if dataIsLogin  %}
+					<span class="label label-primary">允许</span>
+					{% else %}
+					<span class="label label-default">未允许</span>
+					{% endif %}
+                </td>
+                <td>
+                    {% if admin == 1  %}
+					<a href="/user/edit/{{ data.userId }}" class="btn  btn-small btn-waring">编辑</a>
+						{% if id != data.userId  %}
+						<a href="/user/delete/{{ data.userId }}" class="btn  btn-small btn-waring">删除</a>
+						{% endif %}
+					{% elif id == data.userId  %}
+					<a href="/user/edit/{{ data.userId }}" class="btn  btn-small btn-waring">编辑</a>
+					{% endif %}
+		    
+
+                </td>
+            </tr>
+          
+        </tbody>
+    </table>
+</div>
+{% endblock %}

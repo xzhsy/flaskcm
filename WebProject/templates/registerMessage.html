@@ -1,0 +1,36 @@
+{% extends 'layout.html' %} {% block content %}
+
+<br>
+<div class="alert alert-success alert-dismissible" role="alert">
+    <strong>消息</strong>注册成功
+</div>
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <legend>用户申请信息</legend>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">用户名</label>
+        <div class="col-sm-4">
+            <label type="text" class="form-control">{{ model.username}}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">电子邮箱</label>
+        <div class="col-sm-4">
+
+            <label type="text" class="form-control">{{ model.email}}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">备注信息</label>
+        <div class="col-sm-4">
+            <label type="text" class="form-control">{{ model.note}}</label>
+        </div>
+    </div>
+</form>
+
+<div class="alert alert-info" role="alert">
+    <strong class="label label-primary">处理进度</strong>&nbsp;&nbsp;&nbsp;&nbsp;请等待管理员处理，完成后您将收到邮件通知。
+</div>
+
+{% endblock %}

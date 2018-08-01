@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<br>
+<div id="alertContainer">
+
+</div>
+<script src="/static/scripts/sys.js"></script>
+<script src="/static/scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#btnSave").click(function (event) {
+            // 阻止默认的表单请求
+            event.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "/user/delete",
+                data: {
+                    'userId': $("#hfuserId").val(),
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.state == 0) {
+                        // 显示消息栏
+                        bs_alert_Info(data.msg);
+                        $("form[role='form']").hide();
+                        setTimeout(function () {
+                            window.location.href = "/user";
+                        },1000);
+                    }
+                }
+            });
+        });
+
+    })
+</script>
+<form action="" method="POST" class="form-horizontal" role="form">
+    <div class="form-group">
+        <legend>用户删除确认</legend>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">用户名</label>
+        <div class="col-sm-6">
+            <input type="hidden" value="{{ model.userId }}" name="userId" id="hfuserId">
+            <label type="text" class="form-control">{{ model.username }}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-6">
+            <label type="email" class="form-control" >{{ model.email }}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Note</label>
+        <div class="col-sm-6">
+            <label type="text" class="form-control">{{ model.note }}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-2">
+            <button type="button" class="btn-danger" id="btnSave">确定删除</button>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}

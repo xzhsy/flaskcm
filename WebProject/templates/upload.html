@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+									<div class="graph-visual tables-main">
+												<h4 class="inner-tittle two"> 文件上传与下载 </h4>
+												<form method="POST" enctype="multipart/form-data" action="/upload">
+                                                      <input type="file" name="file">
+                                                      <input type="submit"  value="upload">
+											   </form>
+                                        													<div class="table-responsive">
+														<div class="tables">
+																<table class="table table-bordered table-hover table-striped">
+																	<thead>
+																	<tr>
+																		<th class="col-3 text-center">文件列表</th>
+																		<th class="col-3 text-center">操作</th>
+
+																	</tr>
+																</thead>
+																<tbody>
+
+                                                                {% for photo in files_list %}
+
+    <tr>
+        <td>{{ photo }}</td>
+        <td>
+    <a href="/file/{{ photo }}">download</a>
+            </td>
+    </tr>
+{% endfor %}
+																</tbody>
+																</table>
+															</div>
+
+													</div>
+										</div>
+										<!--//graph-visual-->
+{% endblock %}									 
+  

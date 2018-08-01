@@ -1,0 +1,119 @@
+{% extends 'base.html' %} 
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+					<!-- //header-ends -->
+						<!--outter-wp-->
+							<div class="outter-wp" style="font-size:22px">
+									<!--sub-heard-part-->
+									  <div class="sub-heard-part">
+									   <ol class="breadcrumb m-b-0">
+											<li><a href="index.html">Home</a></li>
+											<li class="active">Tables</li>
+										</ol>
+									   </div>
+								  <!--//sub-heard-part-->
+								  <div class="search">
+										<form method="post" action="/project.html" id="pos" >
+											<div class="col-lg">
+											<div class="input-group">
+												<input type="text" class="form-control" placeholder="Search" name="prjname" id="txtprjname">
+											</div>
+											<span >
+											<button type="submit" class="btn btn-default" id="btnSave">查找</button>
+										</span>
+									</div>
+										</form>
+										</div>
+										
+										<script type="text/javascript">
+											$(function () {
+												$("#btnSave").click(function (event) {										
+													$.ajax({
+														type: "POST",
+														async: false,
+														url: "/project.html",
+														function (data) {
+															window.location.href ="/project.html?prjname="+$("#txtprjname").val();
+														}
+													});
+												});
+										
+											})
+										</script>
+									<div class="graph-visual tables-main">
+												<h3 class="inner-tittle two"> {{ title }} </h3>
+													<div class="table-responsive">
+														<div class="tables">
+																<table class="table table-bordered table-hover table-striped"> 
+																	<thead> 
+																	<tr>
+																		<th class="col-3 text-center">项目</th>
+																		<th class="col-3 text-center">工程</th>
+																		<th class="col-3 text-center">主机地址</th>
+																		<th class="col-3 text-center">分组信息</th>
+																		<th class="col-3 text-center">节点数</th>
+																		<th class="col-3 text-center">http</th>
+																		<th class="col-3 text-center">https</th>
+																		<th class="col-3 text-center">ajp</th>
+																		<th class="col-3 text-center">shutdown</th>
+																		<th class="col-3 text-center">jmx</th>
+																		<th class="col-3 text-center">dubbo </th>
+																		<th class="col-3 text-center">目录路径</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	{% for i in args %}
+																	<tr>
+																		
+																	  <td>{{ i[0] }}</td>
+																		<td>{{ i[1] }}</td>
+																		<td>{{ i[2] }}</td>
+																		<td>{{ i[3] }}</td>
+																		<td>{{ i[4] }}</td>
+																		<td>
+																			{% for k in i[5] %}
+																				{{ k }}
+																			{% endfor %}
+																		</td>
+																		<td>
+																			{% for k in i[6] %}
+																				{{ k }}
+																			{% endfor %}
+																		</td>
+																		<td>
+																			{% for k in i[7] %}
+																				{{ k }}
+																			{% endfor %}
+																		</td>
+																				<td>
+																			{% for k in i[8] %}
+																				{{ k }}
+																			{% endfor %}
+																		</td>
+																				<td>
+																			{% for k in i[9] %}
+																				{{ k }}
+																			{% endfor %}
+																		</td>
+																				<td>
+																			{% for k in i[10] %}
+																				{{ k }}
+																			{% endfor %}
+																		</td>
+																		<td>
+																			{% for k in range(1,i[4]+1) %}
+																			~/{{ i[1] }}/tomcat{{ k }}
+																			{% endfor %}
+																		</td>
+																	</tr>
+																	{% endfor %}
+																</tbody>
+																</table>
+															</div>
+												
+													</div>
+										</div>
+										<!--//graph-visual-->
+									</div>
+									<!--//outer-wp-->
+{% endblock %}									 

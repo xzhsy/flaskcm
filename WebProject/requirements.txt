@@ -1,0 +1,7 @@
+"WEB 框架"
+flask
+"数据库 ORM"
+mysql
+sqlalchemy
+"Excel 处理"
+openpyxl

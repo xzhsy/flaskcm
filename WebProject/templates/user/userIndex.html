@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block content %}
+<!--outter-wp-->
+							<div class="outter-wp">
+									<!--sub-heard-part-->
+									  <div class="sub-heard-part">
+									   <ol class="breadcrumb m-b-0">
+											<li><a href="index.html">Home</a></li>
+											<li class="active">Tables</li>
+										</ol>
+									   </div>
+								  <!--//sub-heard-part-->
+<h2>{{ title }}</h2>
+
+<div class="row">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    用户名
+                </th>
+                <th>
+                    邮箱
+                </th>
+                <th>
+                    管理员标识
+                </th>
+                <th>
+                    创建时间
+                </th>
+               <th>
+                    是否允许登录
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td>
+                    {{ item.username }}
+                </td>
+                <td>
+                    {{ item.email}}
+                </td>
+                <td>
+                    {% if item.IsAdmin  %}
+                    <span class="label label-primary">管理员</span>
+                    {% else %}
+                    <span class="label label-default">普通</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {{ item.create_time }}
+                </td>
+                <td>
+					{% if item.IsLogin  %}
+					<span class="label label-primary">允许</span>
+					{% else %}
+					<span class="label label-default">未允许</span>
+					{% endif %}
+                </td>
+                <td>
+                    {% if admin == 1  %}
+					<a href="/user/edit/{{ item.userId }}" class="btn  btn-small btn-waring">编辑</a>
+						{% if id != item.userId  %}
+						<a href="/user/delete/{{ item.userId }}" class="btn  btn-small btn-waring">删除</a>
+						{% endif %}
+					{% elif id == item.userId  %}
+					<a href="/user/edit/{{ item.userId }}" class="btn  btn-small btn-waring">编辑</a>
+					{% endif %}
+		    
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+									</div>
+									<!--//outer-wp-->
+{% endblock %}

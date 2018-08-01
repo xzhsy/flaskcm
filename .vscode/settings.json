@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.tpl": "html"
+    },
+    "python.pythonPath": "${workspaceFolder}\\venv\\Scripts\\python.exe"
+}

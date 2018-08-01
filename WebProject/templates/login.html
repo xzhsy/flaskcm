@@ -1,0 +1,36 @@
+{% extends 'layout.html' %} 
+{% block title %} LOGIN  {% endblock %}
+{% block content %}
+								<!--/login-->
+								
+									   <div class="error_page">
+												<!--/login-top-->
+												
+													<div class="error-top">
+													    <div class="login">
+														<h3 class="inner-tittle t-inner">登录</h3>
+
+																<form action="/login.html" method="POST">
+																		<input type="text" class="text" value="用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}" name="username" >
+																		<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" name="password">
+																		<div class="submit"><input type="submit"  value="Login" ></div>
+																		<div class="clearfix"></div>
+																		
+																		<div class="new">
+																			<p><label class="checkbox11"><input type="checkbox" name="checkbox"><i> </i>Forgot Password ?</label></p>
+																			<p class="sign">Do not have an account ? <a href="register.html">Sign Up</a></p>
+																			<div class="clearfix"></div>
+																		</div>
+																	</form>
+														</div>
+
+														
+													</div>
+													
+													
+												<!--//login-top-->
+										   </div>
+						
+										  	<!--//login-->
+										    
+{% endblock %}

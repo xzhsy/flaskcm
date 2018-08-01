@@ -1,0 +1,102 @@
+{% extends 'base.html' %} 
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+								  <div class="search">
+										<form method="post" action="/project.html" id="pos" >
+
+											
+											<div class="input-group">
+												<input type="text" class="form-control" placeholder="Search" name="prjname" id="txtprjname">
+											</div>
+											
+											<button type="submit" class="btn btn-info" id="btnSave">查找</button>
+										
+
+										</form>
+										</div>
+										<script type="text/javascript">
+											$(function () {
+												$("#btnSave").click(function (event) {										
+													$.ajax({
+														type: "POST",
+														async: false,
+														url: "/project.html",
+														function (data) {
+															window.location.href ="/project.html?prjname="+$("#txtprjname");
+														}
+													});
+												});
+										
+											})
+										</script>
+									<div class="graph-visual tables-main">
+												<h4 class="inner-tittle two"> {{ title }} </h4>
+													<div class="table-responsive">
+														<div class="tables">
+																<table class="table table-bordered table-hover table-striped"> 
+																	<thead> 
+																	<tr>
+																		<th class="col-3 text-center">项目</th>
+																		<th class="col-3 text-center">工程</th>
+																		<th class="col-3 text-center">主机地址</th>
+																		<th class="col-3 text-center">分组信息</th>
+																		<th class="col-3 text-center">节点数</th>
+																		<th class="col-3 text-center">http</th>
+																		<th class="col-3 text-center">https</th>
+																		<th class="col-3 text-center">ajp</th>
+																		<th class="col-3 text-center">shutdown</th>
+																		<th class="col-3 text-center">jmx</th>
+																		<th class="col-3 text-center">dubbo </th>
+																		<th class="col-3 text-center">目录路径</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	{% for i in index_list %}
+																	<tr>
+																		
+																	  <td>{{ i.proname }}</td>
+																		<td>{{ i.project }}</td>
+																		<td>{{ i.IPAddress }}</td>
+																		<td>{{ i.gr }}</td>
+																		<td>{{ i.node }}</td>
+																		<td>
+																				{{ i.http }}
+																		</td>
+																		<td>
+																				{{ i.https }}
+																		</td>
+																		<td>
+																				{{ i.ajp }}
+																		</td>
+																				<td>
+																				{{ i.shutdown }}
+
+																		</td>
+																				<td>
+																				{{ i.jmx }}
+																		</td>
+																				<td>
+																				{{ i.dubbo }}
+																		</td>
+																		<td>
+																			{% for k in range(1,i.node+1) %}
+																			~/{{ i.project }}/tomcat{{ k }}
+																			{% endfor %}
+																		</td>
+																	</tr>
+																	{% endfor %}
+																</tbody>
+																</table>
+																<nav aria-label="Page navigation" class="pull-right">
+                    												<ul class="pagination">
+                        												{{ html|safe }}
+                    												</ul>
+                												</nav>
+															</div>
+												
+													</div>
+										</div>
+										<!--//graph-visual-->
+
+{% endblock %}									 
