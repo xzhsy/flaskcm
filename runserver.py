@@ -21,7 +21,7 @@ if __name__ == '__main__':
     """启动服务"""
     HOST = environ.get('SERVER_HOST', '0.0.0.0')
     try:
-        PORT = int(environ.get('SERVER_PORT', '5555'))
+        PORT = int(environ.get('SERVER_PORT', '8080'))
     except ValueError:
         PORT = 8080
     app.run(HOST, PORT)
