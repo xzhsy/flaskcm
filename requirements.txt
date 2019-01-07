@@ -34,7 +34,7 @@ qrcode==6.0
 requests==2.20.0
 six==1.11.0
 SQLAlchemy==1.2.5
-urllib3==1.22
+urllib3==1.23
 virtualenv==15.2.0
 watchdog==0.8.3
 Werkzeug==0.14.1
